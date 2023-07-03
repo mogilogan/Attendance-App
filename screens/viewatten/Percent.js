@@ -100,7 +100,7 @@ const Percent = ({navigation}) => {
     setSelected(itemValue);
 
     try {
-      const response = await axios.get('http://localhost:4000/percentage', {
+      const response = await axios.get('http://192.168.1.6:4000/percentage', {
         params: {
           documentId: itemValue,
         },

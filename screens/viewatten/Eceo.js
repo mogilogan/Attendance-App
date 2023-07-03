@@ -32,7 +32,7 @@ const Eceo = ({navigation}) => {
       });
     const handleRequestCollectionIds = async () => {
       try {
-         await axios.get('http://localhost:4000/collections').then((response) =>{
+         await axios.get('http://192.168.1.6:4000/collections').then((response) =>{
          setCollectionIds(response.data);
          })
   
