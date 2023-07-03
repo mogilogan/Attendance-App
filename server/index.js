@@ -47,8 +47,6 @@ app.get('/percentage', async (req, res) => {
     let presentarray = Array(60).fill(0);
     let precentarray = Array(60).fill(0);
     for(i=0;i<=60;i++){
-
-
     }
 
     const fetchDocuments = collections.map(async (collection) => {
@@ -71,19 +69,16 @@ app.get('/percentage', async (req, res) => {
     console.log(presentarray);
     console.log(totalStates);
 
-
     for(i=0;i<presentarray.length;i++) {
        precentarray[i] = (presentarray[i] / totalStates) * 100;
     }
     console.log(precentarray)
-
     res.json({ precentarray });
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).json({ error: 'An error occurred while fetching the data' });
   }
 });
-
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

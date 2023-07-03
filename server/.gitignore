@@ -10,8 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 
-.json
-
+/serivceAccountKey.json
 # macOS
 .DS_Store
 
