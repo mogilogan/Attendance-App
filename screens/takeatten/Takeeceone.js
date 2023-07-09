@@ -7,69 +7,13 @@ import { FIRESTORE_DB } from '../../firebaseConfig';
 import { AntDesign } from '@expo/vector-icons';
 
 const initialState = {
-    "AARTHE": 'present', "ABHINAV KUMAR": 'present', "AMAN SINGH": 'present', "ASHMITHA": 'present',"ASWIN R": 'present', "ASWIN V": 'present',"BALAMURUGANANTHAM": 'present',
-    "BOGI VIJAY KUMAR": 'present',
-    "CHAITANYA VARDHAN KOTE": 'present',
-    "CHANDIKA SREE TEJA": 'present',
-    "CHENNUPATI VENKATA UPENDRA": 'present',
-    "CYRIL CHRISTOPHER B": 'present',
-    "DAMALACHERUVU GOWTHAM SAI": 'present',
-    "DANAPRASAD M": 'present',
-    "DEEPAK M": 'present',
-    "DIVAKAR J": 'present',
-    "FARVESH H": 'present',
-    "G ARJUN KRISHNA": 'present',
-    "GANJA YUVARANI": 'present',
-    "GNANAVENDANE T": 'present',
-    "GOKULKRISHNA P": 'present',
-    "GURUPRASAD R": 'present',
-    "HARIHARAN G V": 'present',
-    "HARSHAL KARIYA": 'present',
-    "HRITHIN SUNIL": 'present',
-    "JANGAM CHAITANYA SAI": 'present',
-    "JAYARAJ POZHILAN": 'present',
-    "JOSEPH G CARDOZ": 'present',
-    "JYOTHI SRI SAI SWARUP NADENDLA": 'present',
-    "K RAGAVI": 'present',
-    "KADALI HARSHA SRI SAMPATH": 'present',
-    "KALAIMATHI S": 'present',
-    "KALISETTY BHARGAV NAIDU": 'present',
-    "KALYAN": 'present',
-    "KAMALESHKUMAR K": 'present',
-    "KARAN J": 'present',
-    "KATTOJU HEMANTH": 'present',
-    "KAUSHIK": 'present',
-    "KEERTHIVASAN": 'present',
-    "KRISHNA TEJA MURIKIPUDI": 'present',
-    "MADDUKURI SRIMANJUNADH": 'present',
-    "MADESHVARADHAN V": 'present',
-    "MALLELA SATYA MANIKYA SAHITHI": 'present',
-    "MAMATHA": 'present',
-    "MANCHIKALAPATI MANOJ LEKYENDRA": 'present',
-    "MANGAIYARKARASI": 'present',
-    "MANJULA K": 'present',
-    "MANOJ S": 'present',
-    "MOGINDER E": 'present',
-    "MOHAMMED ABDUL BASITH": 'present',
-    "MUHAMMED AJMAL SHAMEER": 'present',
-    "MUPPARAPU VICTOR MATTHEW": 'present',
-    "MURALIDHARAN B": 'present',
-    "NANDHINI P": 'present',
-    "NANDI SREE HARSHITHA": 'present',
-    "NAPPINNAI": 'present',
-    "NATAKARANI NAVEEN": 'present',
-    "AJAYKUMAR N": 'present',
-    "RIHANA M": 'present',
-    "SANGADI MANIKANTHA": 'present',
+    "AARTHE": 'present', "ABHINAV KUMAR": 'present', "AMAN SINGH": 'present', "ASHMITHA": 'present',"ASWIN R": 'present', "ASWIN V": 'present',"BALAMURUGANANTHAM": 'present',"BOGI VIJAY KUMAR": 'present',"CHAITANYA VARDHAN KOTE": 'present',"CHANDIKA SREE TEJA": 'present',"CHENNUPATI VENKATA UPENDRA": 'present',"CYRIL CHRISTOPHER B": 'present',"DAMALACHERUVU GOWTHAM SAI": 'present', "DANAPRASAD M": 'present', "DEEPAK M": 'present',"DIVAKAR J": 'present',"FARVESH H": 'present',"G ARJUN KRISHNA": 'present', "GANJA YUVARANI": 'present',"GNANAVENDANE T": 'present', "GOKULKRISHNA P": 'present', "GURUPRASAD R": 'present', "HARIHARAN G V": 'present',"HARSHAL KARIYA": 'present',"HRITHIN SUNIL": 'present',"JANGAM CHAITANYA SAI": 'present', "JAYARAJ POZHILAN": 'present', "JOSEPH G CARDOZ": 'present', "JYOTHI SRI SAI SWARUP NADENDLA": 'present',"K RAGAVI": 'present', "KADALI HARSHA SRI SAMPATH": 'present', "KALAIMATHI S": 'present',  "KALISETTY BHARGAV NAIDU": 'present',  "KALYAN": 'present', "KAMALESHKUMAR K": 'present', "KARAN J": 'present',"KATTOJU HEMANTH": 'present', "KAUSHIK": 'present', "KEERTHIVASAN": 'present', "KRISHNA TEJA MURIKIPUDI": 'present',"MADDUKURI SRIMANJUNADH": 'present', "MADESHVARADHAN V": 'present', "MALLELA SATYA MANIKYA SAHITHI": 'present', "MAMATHA": 'present',"MANCHIKALAPATI MANOJ LEKYENDRA": 'present', "MANGAIYARKARASI": 'present', "MANJULA K": 'present', "MANOJ S": 'present', "MOGINDER E": 'present',"MOHAMMED ABDUL BASITH": 'present', "MUHAMMED AJMAL SHAMEER": 'present', "MUPPARAPU VICTOR MATTHEW": 'present', "MURALIDHARAN B": 'present',"NANDHINI P": 'present', "NANDI SREE HARSHITHA": 'present', "NAPPINNAI": 'present', "NATAKARANI NAVEEN": 'present', "AJAYKUMAR N": 'present',  "RIHANA M": 'present',"SANGADI MANIKANTHA": 'present',
   };
-
-  const monday = ['OEC','VLSI','CSE','IEM','H/M','MOE','LY','SP'];
-  const tuesday = ['VLSI','MOE','CSE','H/M','IEM','RC','EITK','EITK'];
-  const wednesday = ['H/M','LAB','LAB','LAB','OEC','T&P','T&P','T&P'];
-  const thursday = ['CSE','MOE','DCN','OEC','RC','LAB','LAB','LAB'];
-  const friday = ['IEM','DCN','CSE','VLSI','H/M','LAB','LAB','LAB'];
-
-
+  const monday = ['H/M','C/G','IOE','ES','OEC','LAB','LAB','LAB'];
+  const tuesday = ['H/M','W/C','IOE','CNS','ITC','LAB','LAB','LAB'];
+  const wednesday = ['OEC','T&P','T&P','T&P','H/M','LAB','LAB','LAB'];
+  const thursday = ['WC','IOE','ES','ITC','CNS','PE','PE','LY'];
+  const friday = ['ES','ITC','CNS','H/M','OEC','WC','MP','MP'];
 
 const Takeeceone = ({navigation}) => {
   const route = useRoute();
@@ -77,10 +21,7 @@ const Takeeceone = ({navigation}) => {
   const [dverify,setDverify] = useState(0);
   const [refArray, setRefArray] = useState([]);
   const [remainingArray, setRemainingArray] = useState([]);
-  const [updatedArray,setUpdatedArray] = useState([]);
   const [selectedValue, setSelectedValue] = useState('');
-
-
   const [attendance, setAttendance] = useState(initialState);
 
   useEffect(() => {
@@ -96,9 +37,7 @@ const Takeeceone = ({navigation}) => {
       headerStyle: {
         backgroundColor: '#005915'
       },
-  
       headerLeft: () => (
-        
         <TouchableOpacity
           onPress={() => navigation.goBack()}
         ><Text>
@@ -144,25 +83,14 @@ const handleprevdata = async (itemValue) => {
       const sortedEntries = Object.entries(data).sort();
       const sortedData = Object.fromEntries(sortedEntries);
       setAttendance(sortedData);
-      
     } else {
       console.log('Document not found');
     }
-       
-    
-      
-    
   } catch (error) {
     console.log('Error fetching document:', error);
   }
-
   setSelectedValue(itemValue)
-  
 }
-
-  
-
-
 
 
 const handleToggleStatus = (name) => {
@@ -173,16 +101,14 @@ const handleToggleStatus = (name) => {
 };
 
 const subatt = async () => {
-
      const docRef = doccc(collection(FIRESTORE_DB, date), selectedValue);
      await setDoc(docRef, attendance);
      navigation.goBack();
   };
 
-
   return (
     <SafeAreaView className='flex-1'>
-      <ScrollView className="bg-slate-500 ">
+      <ScrollView className="bg-white ">
     <View className="flex-1">
     <Text className="text-xl text-center py-2 text-yellow-400">SELECTED DATE: <Text className='text-red-400'>{date}</Text></Text>
 <Text className="text-xl text-center pt-2 pb-4 text-yellow-400">SELECTED DAY: <Text className='text-red-400'>{day}</Text></Text>
@@ -192,13 +118,14 @@ const subatt = async () => {
         <Text className="text-white text-sm text-center">Verify Data!</Text>
       </TouchableOpacity>
     </View>
-    
+
     {dverify <= 1 ? (
       <View>
         <Text>Verify Data 1st!</Text>
       </View>
     ) :
     (
+
     <View>
       <View className='p-4'>
       {collectionData === "no data" ? (
@@ -226,8 +153,7 @@ const subatt = async () => {
   </View>
 )}
 
-     
-
+    
       <Text className='text-lg font-bold mb-2'>Take new:</Text>
       <Picker
         selectedValue={selectedValue}
@@ -242,10 +168,6 @@ const subatt = async () => {
     </View>
       
       
-      
-
-
-
   <View className="mx-2 py-5">
     {Object.entries(attendance).map(([name, status]) => (
       <View key={name} className="flex-row items-center py-2 space-x-4">
@@ -281,4 +203,4 @@ const subatt = async () => {
   )
 }
 
-export default Takeeceone
+export default Takeeceone;

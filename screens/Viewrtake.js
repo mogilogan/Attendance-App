@@ -22,8 +22,9 @@ const Viewrtake = ({navigation}) => {
   
   return (
     <SafeAreaView>
-    <View className="flex items-center h-screen flex-column pt-[250]">
-      <Text className="py-6 text-2xl text-bl">View or Take Attendence!</Text>
+    <View className="flex items-center h-screen flex-column pt-[250]">    
+     <Text className="py-2 text-2xl text-bl">ECE 2020-2024</Text>
+      <Text className="py-4 text-2xl text-bl">View or Take Attendence!</Text>
       <View className="flex flex-row px-20">
       <Animated.View className="w-1/3 p-2">
       <Button  onPress={()=>navigation.navigate('Selectview')} title="View" />

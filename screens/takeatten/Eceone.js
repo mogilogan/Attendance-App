@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import { signInWithEmailAndPassword} from "firebase/auth"
 import { FIREBASE_AUTH } from '../../firebaseConfig';
-// import auth from '@react-native-firebase/auth';
 
-// import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+import { BannerAd, BannerAdSize} from 'react-native-google-mobile-ads';
 
-// const adUnitId =  'ca-app-pub-7004619205587062/3757223397';
+const adUnitId =  'ca-app-pub-7004619205587062/3757223397';
 
 
 const Eceone = ({navigation}) => {
@@ -43,16 +42,12 @@ const Eceone = ({navigation}) => {
   
   const handleLogin = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password);
-      const users = userCredential.user.email.substring(0,12); 
-      
-      navigation.navigate('Eceoneatt',{users});
-      setLoginmsg('');
-      
+      const userCredential = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password).then(() => {
+        navigation.navigate('Eceoneatt');
+      });
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage, errorCode);
+      setLoginmsg(errorCode);
     }
   };
 
@@ -68,13 +63,13 @@ const Eceone = ({navigation}) => {
     <Button  title="Login" onPress={handleLogin} disabled={!(email==="gokulkrishna.p@pec.edu")}/>
     </View>
     <Text>{loginmsg}</Text>
-    {/* <BannerAd
+    <BannerAd
       unitId={adUnitId}
       size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
       requestOptions={{
         requestNonPersonalizedAdsOnly: true,
       }}
-    /> */}
+    />
   </View>
   )
 }

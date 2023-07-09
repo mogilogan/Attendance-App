@@ -2,7 +2,7 @@
   "expo": {
     "name": "Attendence App",
     "slug": "Attendence-APP",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,7 +17,7 @@
       ]
     ],
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -28,8 +28,9 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 2,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.logan4102.attendence"
@@ -39,12 +40,11 @@
     },
     "extra": {
       "eas": {
-        "projectId": "311f3a64-f9bc-4c04-b8ff-350473a5bbde"
+        "projectId": "cf46e966-e380-4288-9ebd-e78fd2f7a455"
       }
     }
   },
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-7004619205587062~9067854859",
-    "ios_app_id": "ca-app-pub-7004619205587062~8605391247"
+    "android_app_id": "ca-app-pub-7004619205587062~9067854859"
   }
 }

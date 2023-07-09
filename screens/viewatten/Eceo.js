@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button,StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import axios from 'axios';
 import { Picker } from '@react-native-picker/picker';
 import { collection ,getDocs as getDocss, doc as doccc,getDoc} from 'firebase/firestore';
 import { FIRESTORE_DB } from '../../firebaseConfig';
 import { AntDesign } from '@expo/vector-icons';
 
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+
+const adUnitId =  'ca-app-pub-7004619205587062/4279771450';
+
+
 const Eceo = ({navigation}) => {
 
   useEffect(() => {
-
+    // Set navigation Options
     navigation.setOptions({
       title: "VIEW DATE WISE",
       headerTitleAlign:"center",
@@ -20,19 +25,18 @@ const Eceo = ({navigation}) => {
       headerStyle: {
         backgroundColor: '#005915'
       },
-  
       headerLeft: () => (
-        
         <TouchableOpacity
           style={{ marginLeft: 2 }}
           onPress={() => navigation.goBack()}
         ><Text>
-  <AntDesign name="leftcircle" size={20} color="black" /> <Text className="text-xl pb-10  ">BACK</Text></Text></TouchableOpacity>
+        <AntDesign name="leftcircle" size={20} color="black" /> <Text className="text-xl pb-10  ">BACK</Text></Text></TouchableOpacity>
       ),
       });
+      // Request Collection Function 
     const handleRequestCollectionIds = async () => {
       try {
-         await axios.get('http://192.168.1.6:4000/collections').then((response) =>{
+         await axios.get('https://attendence-server.onrender.com/collections').then((response) =>{
          setCollectionIds(response.data);
          })
   
@@ -43,29 +47,25 @@ const Eceo = ({navigation}) => {
     }; 
 
     handleRequestCollectionIds();
-   
   }, [])
   
-
+  // necessary States
   const [collectionIds, setCollectionIds] = useState([]);
-
-  
-
   const [selectedMonth, setSelectedMonth] = useState('');
   const [ selecteddate,setSelecteddate] = useState('');
   const [attendance, setAttendance] = useState('');
   const [collectionData, setCollectionData] = useState(null);
   const [availableDates, setAvailableDates] = useState([]);
 
+  // Selection Month to Display Dates to fetch Separate Collections
   const handleMonthChange = (month) => {
     setCollectionData("")
     setSelectedMonth(month);
-
     const filteredDates = collectionIds.filter(date => date.startsWith(`2023-${month}`));
-
     setAvailableDates(filteredDates);
   };
 
+  // date Change Function to Fetch Docs names
   const handledatechange = async (date) => {
     setSelecteddate(date);
     try {
@@ -82,41 +82,29 @@ const Eceo = ({navigation}) => {
          setCollectionData('error');
     } 
   }
-
+  // Fetch data from selected Docs
   const fetchdocument = async(itemValue) =>{
     try {
       const docRef  = doccc(FIRESTORE_DB,selecteddate,itemValue)
       const docSnap = await getDoc(docRef);
-    
       if (docSnap.exists()) {
         const data = docSnap.data();
         const sortedEntries = Object.entries(data).sort();
         const sortedData = Object.fromEntries(sortedEntries);
         setAttendance(sortedData);
-        
       } else {
         console.log('Document not found');
       }
-         
     } catch (error) {
       console.log('Error fetching document:', error);
     }
   }
- 
-
-
-
-
-
-
-
   return (
     <ScrollView>
     <View>
-      <View  className='p-[16] bg-[#fff]'>
+      <View  className='p-[16] bg-white '>
       <Text  className='text-xl mb-8'>Select a month:</Text>
       <Picker
-        
         className="h-[40] border-8 border-[#ccc] mb-[16]"
         selectedValue={selectedMonth}
         onValueChange={handleMonthChange}
@@ -172,7 +160,6 @@ const Eceo = ({navigation}) => {
         </View>
       )}
    
-
    <View className="mx-2 py-5">
     {Object.entries(attendance).map(([name, status]) => (
       <View key={name} className="flex-row items-center py-2 space-x-4">
@@ -191,39 +178,22 @@ const Eceo = ({navigation}) => {
         
       </View>
     ))}
+
+
+<BannerAd
+className="pt-9"
+      unitId={adUnitId}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+      }}
+    />
   </View>
-
-
 
     </View>
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    
-    padding: 16,
-    backgroundColor: '#fff',
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  picker: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    marginBottom: 16,
-  },
-  dateContainer: {
-    marginTop: 16,
-  },
-  noDataText: {
-    fontSize: 16,
-    fontStyle: 'italic',
-  },
-});
 
 
 export default Eceo;

@@ -2,28 +2,28 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useState,useEffect } from 'react';
 import moment from 'moment/moment';
 import {Calendar} from 'react-native-calendars';
+
 import {  FIRESTORE_DB } from '../../firebaseConfig';
 import { collection,getDocs as getDocss } from 'firebase/firestore'
 import { AntDesign } from '@expo/vector-icons';
-import { useRoute } from '@react-navigation/native';
-// import { InterstitialAd, TestIds, AdEventType } from 'react-native-google-mobile-ads';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { InterstitialAd, AdEventType } from 'react-native-google-mobile-ads';
 
-// const adUnitId = 'ca-app-pub-7004619205587062/3266871442';
+const adUnitId = 'ca-app-pub-7004619205587062/3266871442';
 
-// const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
-//   requestNonPersonalizedAdsOnly: true,
-//   keywords: ['fashion', 'clothing','gaming','technology','aerospace'],
-// });
+const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+  requestNonPersonalizedAdsOnly: true,
+  keywords: ['fashion', 'clothing','gaming','technology','aerospace'],
+});
 
 const Eceoneatt = ({navigation}) => {
 
-  const route = useRoute();
-  const {users} = route.params;
-  // const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [collectionData, setCollectionData] = useState(null);
   const [selectedDate, setSelectedDate] = useState('');
   const [date,setDate] = useState();
   const [day,setDay] = useState();
+  const [user,setUser] = useState();
 
   useEffect(() => {
 
@@ -49,17 +49,27 @@ const Eceoneatt = ({navigation}) => {
     })
 
 
-    // const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
-    //   setLoaded(true);
-    //   interstitial.show();
-    // });
+    const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    setUser(user.email);
+  } else {
+   setUser("User not found")
+  }
+});
+   
+    const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
+      setLoaded(true);
+      interstitial.show();
+    });
 
-    // // Start loading the interstitial straight away
-    // interstitial.load();
+    // Start loading the interstitial straight away
+    interstitial.load();
 
-    // // Unsubscribe from events on unmount
-    // return unsubscribe;
+    // Unsubscribe from events on unmount
+    return unsubscribe;
   }, [])
+
 
 
 
@@ -91,11 +101,11 @@ const Eceoneatt = ({navigation}) => {
     };
 
   return (
-    <View className="bg-slate-500 flex-1 justify-center items-center">
+    <View className="bg-white  flex-1 justify-center items-center">
     <ScrollView>
 
     <View >
-    <Text className="text-2xl text-center pb-4">Welcome {users}</Text>
+    <Text className="text-2xl text-center pb-4">Welcome{user}</Text>
 
       <Text className="text-2xl text-center pb-4">Select a Date to Take Attendence!</Text>
       <Calendar

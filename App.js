@@ -1,9 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, Text, View } from 'react-native';
-import Details from './screens/Details.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import List from './screens/List.js';
 import Eceone from './screens/takeatten/Eceone.js';
 import Eceoneatt from './screens/takeatten/Eceoneatt.js';
 import Takeeceone from './screens/takeatten/Takeeceone.js';
@@ -21,7 +17,6 @@ export default function App() {
   return (
    
     <NavigationContainer>
-      
     <Stack.Navigator initialRouteName="Viewrtake">
     <Stack.Screen name="Viewrtake" component={Viewrtake} />
     <Stack.Screen name="Eceone" component={Eceone} />
@@ -30,14 +25,8 @@ export default function App() {
     <Stack.Screen name="Percent" component={Percent} />
     <Stack.Screen name="Eceoneatt" component={Eceoneatt} />
     <Stack.Screen name="takeeceone" component={Takeeceone} />
-    
-
-    {/* <Stack.Screen name="my Todos" component={List} />
-    <Stack.Screen name="Details" component={Details} /> */}
     </Stack.Navigator>
-   
     </NavigationContainer>
-  
   );
 }
 
