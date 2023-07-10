@@ -19,6 +19,7 @@ const initialState = [
 
 const Percent = ({navigation}) => {
 
+    const [loaded,setLoaded] = useState(false);
     const [selected,setSelected] = useState("");
     const [attendancePercentage, setAttendancePercentage] = useState(0);
     const [loading, setLoading] = useState(true);
